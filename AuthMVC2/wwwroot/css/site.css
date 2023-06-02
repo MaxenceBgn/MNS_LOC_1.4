@@ -1,0 +1,127 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #00023A;
+}
+
+
+
+/* Menu de navigation */
+#logo_mns {
+    width: 8em;
+}
+
+.profilNotif {
+    font-size: 25px !important;
+    margin-right: 50px;
+}
+
+.bi-person-fill {
+    margin-left: 15px;
+    color: #00023A;
+}
+
+.bi-bell-fill {
+    margin-left: 15px;
+    color: #00023A;
+}
+
+
+
+/* Index - Login */
+
+#login {
+    background-color: #8E8E8E;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+}
+
+#titles {
+    text-align: center;
+    margin-bottom: 20px;
+    flex: none;
+    color: #F3650F;
+}
+
+    #titles h2, h1 {
+        text-shadow: 2px 2px #5f5e5e;
+    }
+
+    #titles h3 {
+        color: black;
+        font-size: 1em;
+    }
+
+
+#rowLogin {
+    display: flex;
+    align-items: center;
+}
+
+#bodyIndex {
+    background-color: #00023A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#authentification_button {
+    border-radius: 10px;
+    background-color: #F3650F;
+    max-width: 150px;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+}
+
+    #authentification_button p {
+        text-align: center;
+        line-height: 35px;
+        margin: 0%;
+        color: white;
+    }
+
+    #authentification_button:hover {
+        background-color: #F3650F;
+    }
+
+#alert-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 97%;
+    z-index: 9999;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+}
+
+#login-submit {
+    background-color: #ce5e1a;
+}
+
+.center-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+

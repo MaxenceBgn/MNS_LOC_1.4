@@ -1,0 +1,40 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div id="alert-container" class="center-alert">
+    <div class="container">
+        <div id="rowLogin" class="row">
+            <div class="col-md-3 col-lg-4 col-sm-1"></div>
+            <div id="login" class="col-md-6 col-lg-4 col-sm-10">
+                <div id="titles">
+                    <h1>MNS</h1>
+                    <h2>Metz Numeric School</h2>
+                    <h3>Gestion du parc matériel</h3>
+                </div>
+                <form id="account" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div id="form">
+                        <div class="mb-3">
+                            <label asp-for="Input.Email" for="userIdent" class="form-label label">Identifiant :</label>
+                            <input asp-for="Input.Email" type="email" class="form-control shadow-lg" id="userIdent" autocomplete="username" aria-required="true">
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Input.Password" for="userPassword" class="form-label">Mot de passe :</label>
+                            <input asp-for="Input.Password" type="password" class="form-control shadow-lg" id="userPassword" autocomplete="current-password" aria-required="true">
+                        </div>
+                    </div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Authentification</button>
+                </form>
+            </div>
+            <div class="col-md-3 col-lg-4 col-sm-1 col-xs-1"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

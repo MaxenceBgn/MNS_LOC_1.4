@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.Extensions.DependencyInjection
+
+
+@{
+    ViewData["Title"] = "Page d'accueil";
+}
+
+<div class="text-center">
+    @{
+        var user = Context.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            var userManager = Context.RequestServices.GetRequiredService<UserManager<IdentityUser>>();
+            var currentUser = await userManager.GetUserAsync(user);
+
+            var userRoles = await userManager.GetRolesAsync(currentUser);
+            var role = userRoles.FirstOrDefault();
+
+            <h1>Bienvenue, @user.Identity.Name</h1>
+            <p>Vous êtes connecté en tant que @role</p>
+        }
+        else
+        {
+            <h1>Bienvenue,</h1>
+            <p>Veuillez vous authentifier pour continuer.</p>
+        }
+    }
+</div>
