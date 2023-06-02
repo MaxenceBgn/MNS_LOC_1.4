@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jI69KhSfGvFF/m37zcGiF+kg4eaJLmoEIOMDf/60RAgu8O3X64HMzHtqwDibbQsaIv5+48br3UFT2dF/mH3w4w==",
+  "dgSpecHash": "DQ3/nt5gakQDyjR7pBJnpB2Xkhc/CJa3iQSz+DoW4poAoAD8Xna4IAhYxrgn8sMnOvx8ERZn2JQaeeI4J+OLyg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Maxence Bourgin\\OneDrive\\Bureau\\Repo projets scolaires\\MNS-Loc\\MNS_Loc_V1.4\\AuthMVC2\\AuthMVC2.csproj",
+  "projectFilePath": "C:\\Users\\Maxence Bourgin\\OneDrive\\Bureau\\Repo projets scolaires\\MNS-Loc\\MNS_LOC_1.4\\AuthMVC2\\AuthMVC2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Maxence Bourgin\\.nuget\\packages\\bootstrap\\5.2.3\\bootstrap.5.2.3.nupkg.sha512",
     "C:\\Users\\Maxence Bourgin\\.nuget\\packages\\bootstrapicons.aspnetcore\\1.9.2\\bootstrapicons.aspnetcore.1.9.2.nupkg.sha512",

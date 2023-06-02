@@ -10905,11 +10905,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Maxence Bourgin\\OneDrive\\Bureau\\Repo projets scolaires\\MNS-Loc\\MNS_Loc_V1.4\\AuthMVC2\\AuthMVC2.csproj",
+      "projectUniqueName": "C:\\Users\\Maxence Bourgin\\OneDrive\\Bureau\\Repo projets scolaires\\MNS-Loc\\MNS_LOC_1.4\\AuthMVC2\\AuthMVC2.csproj",
       "projectName": "AuthMVC2",
-      "projectPath": "C:\\Users\\Maxence Bourgin\\OneDrive\\Bureau\\Repo projets scolaires\\MNS-Loc\\MNS_Loc_V1.4\\AuthMVC2\\AuthMVC2.csproj",
+      "projectPath": "C:\\Users\\Maxence Bourgin\\OneDrive\\Bureau\\Repo projets scolaires\\MNS-Loc\\MNS_LOC_1.4\\AuthMVC2\\AuthMVC2.csproj",
       "packagesPath": "C:\\Users\\Maxence Bourgin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Maxence Bourgin\\OneDrive\\Bureau\\Repo projets scolaires\\MNS-Loc\\MNS_Loc_V1.4\\AuthMVC2\\obj\\",
+      "outputPath": "C:\\Users\\Maxence Bourgin\\OneDrive\\Bureau\\Repo projets scolaires\\MNS-Loc\\MNS_LOC_1.4\\AuthMVC2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

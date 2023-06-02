@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Etat du parc matériel";
+}
+<h1 id="state_material_title">@ViewData["Title"]</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" id="global_state_material_panel">
+            <h3>Etat global du parc</h3><br />
+
+            <p>Nombre total de matériels : ---</p>
+            <p>Nombre de matériels disponibles immédiatement : ---</p>
+            <p>Nombre de matériels HS : ---</p>
+            <p>Nombre d'incidents en cours : ---</p><br />
+            <p>Liste de tous les matériels : </p>
+            <ul>
+                @foreach (var material in Model)
+                {
+                    <li>@material.MaterialId - @material.SerialNumber</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

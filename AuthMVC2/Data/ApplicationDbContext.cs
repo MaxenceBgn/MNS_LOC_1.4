@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AuthMVC2.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,5 +11,7 @@ namespace AuthMVC2.Data
             : base(options)
         {
         }
+
+        public DbSet<Material> Materials { get; set; }
     }
 }

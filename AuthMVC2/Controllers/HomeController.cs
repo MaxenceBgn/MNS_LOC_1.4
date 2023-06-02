@@ -1,4 +1,5 @@
-﻿using AuthMVC2.Models;
+﻿using AuthMVC2.Data;
+using AuthMVC2.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -8,9 +9,12 @@ namespace AuthMVC2.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApplicationDbContext _dbContext;
+
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext dbContext)
         {
             _logger = logger;
+            _dbContext = dbContext;
         }
 
         public IActionResult Index()
@@ -18,9 +22,10 @@ namespace AuthMVC2.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult MaterialState()
         {
-            return View();
+            var materials = _dbContext.Materials.ToList();
+            return View(materials);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
