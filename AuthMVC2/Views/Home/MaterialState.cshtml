@@ -1,24 +1,56 @@
-﻿@{
+﻿<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+@{
     ViewData["Title"] = "Etat du parc matériel";
+    int materialNumber = 0;
+    int outOfOrderMaterialNumber = 0;
+    foreach (var material in Model)
+    {
+        materialNumber++;
+        if (!material.IsFunctional)
+        {
+            outOfOrderMaterialNumber++;
+        }
+    }
+    int avaibleMaterial = materialNumber - outOfOrderMaterialNumber;
 }
 <h1 id="state_material_title">@ViewData["Title"]</h1>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6" id="global_state_material_panel">
+    <div class="row justify-content-center">
+        <div class="col-md-5 state_panel" id="global_state_material_panel">
             <h3>Etat global du parc</h3><br />
 
-            <p>Nombre total de matériels : ---</p>
-            <p>Nombre de matériels disponibles immédiatement : ---</p>
-            <p>Nombre de matériels HS : ---</p>
+            <p>Nombre total de matériels : @materialNumber</p>
+            <p>Nombre de matériels disponibles immédiatement : @avaibleMaterial</p>
+            <p>Nombre de matériels HS : @outOfOrderMaterialNumber</p>
             <p>Nombre d'incidents en cours : ---</p><br />
-            <p>Liste de tous les matériels : </p>
-            <ul>
-                @foreach (var material in Model)
-                {
-                    <li>@material.MaterialId - @material.SerialNumber</li>
-                }
-            </ul>
         </div>
+
+        <div class="col-md-5 state_panel" id="global_state_material_panel">
+            <h3>Recherche d'un matériel</h3>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Type de matériel :</h4>
+                </div>
+                <div class="col-md-8">
+                    <select class="form-select" id="material-select">
+                        <option selected disabled>Choisissez un type de matériel</option>
+                        <option value="ordinateur">Ordinateur</option>
+                        <option value="webcam">Webcam</option>
+                        <option value="souris">Souris</option>
+                        <option value="clavier">Clavier</option>
+                        <option value="badge">Badge</option>
+                    </select>
+                </div>
+                
+                 
+            </div>
+            
+            
+        </div>
+
     </div>
 </div>

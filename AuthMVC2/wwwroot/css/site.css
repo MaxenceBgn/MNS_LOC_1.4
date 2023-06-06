@@ -139,4 +139,16 @@ body {
     color: white;
 }
 
+.state_panel {
+    margin: 10px;
+}
+
+.selected {
+    background-color: yellow;
+}
+
+.state_panel h4 {
+    font-size: 1em;
+}
+
 
