@@ -8,4 +8,5 @@ CREATE TABLE Materials
 	SerialNumber VARCHAR(50),
 	HaveAnAlimentation BIT,
 	MaterialDocumentation VARCHAR(50)
+	TypeId INT NULL REFERENCES MaterialTypes(TypeId);
 )

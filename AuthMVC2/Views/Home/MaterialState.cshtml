@@ -1,11 +1,10 @@
 ﻿<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
 @{
     ViewData["Title"] = "Etat du parc matériel";
     int materialNumber = 0;
     int outOfOrderMaterialNumber = 0;
-    foreach (var material in Model)
+    foreach (var material in Model.Materials)
     {
         materialNumber++;
         if (!material.IsFunctional)
@@ -14,12 +13,14 @@
         }
     }
     int avaibleMaterial = materialNumber - outOfOrderMaterialNumber;
+
+    bool searchResult = true;
 }
 <h1 id="state_material_title">@ViewData["Title"]</h1>
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-5 state_panel" id="global_state_material_panel">
+        <div class="col-md-5 state_panel">
             <h3>Etat global du parc</h3><br />
 
             <p>Nombre total de matériels : @materialNumber</p>
@@ -28,7 +29,7 @@
             <p>Nombre d'incidents en cours : ---</p><br />
         </div>
 
-        <div class="col-md-5 state_panel" id="global_state_material_panel">
+        <div class="col-md-5 state_panel">
             <h3>Recherche d'un matériel</h3>
 
             <div class="row">
@@ -38,11 +39,12 @@
                 <div class="col-md-8">
                     <select class="form-select" id="material-select">
                         <option selected disabled>Choisissez un type de matériel</option>
-                        <option value="ordinateur">Ordinateur</option>
-                        <option value="webcam">Webcam</option>
-                        <option value="souris">Souris</option>
-                        <option value="clavier">Clavier</option>
-                        <option value="badge">Badge</option>
+                        @{
+                            foreach (var materialType in Model.MaterialTypes)
+                            {
+                                <option value=@materialType.TypeName>@materialType.TypeName</option>
+                            }
+                        }
                     </select>
                 </div>
                 
@@ -54,3 +56,19 @@
 
     </div>
 </div>
+
+@if (searchResult)
+{
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-10 state_panel" id="search_results">
+                <h3>Résultats de la recherche</h3><br />
+
+                <p>
+                    Donec gravida lorem augue, eu sagittis leo cursus at. Sed blandit leo eget est bibendum iaculis. Aenean tincidunt ex urna, id mollis nulla fringilla quis. Integer cursus orci id massa tristique fermentum. Aliquam tortor leo, elementum in tempor vitae, maximus sed nulla. Etiam condimentum laoreet orci, nec blandit ligula sodales tristique. Praesent interdum odio ut sem efficitur vestibulum. Maecenas ac sagittis lorem. Sed posuere nulla ac augue tincidunt, nec efficitur tortor semper. Mauris finibus luctus erat vitae gravida. Sed a tempus neque. Ut augue est, vehicula non ipsum sed, viverra tempor tellus. Phasellus quis pharetra lorem, vitae sollicitudin nisi. Nam interdum congue tellus, quis auctor justo porta at.
+                </p>
+            </div>
+
+        </div>
+    </div>
+}

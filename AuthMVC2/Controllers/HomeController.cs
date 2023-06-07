@@ -1,5 +1,6 @@
 ﻿using AuthMVC2.Data;
 using AuthMVC2.Models;
+using AuthMVC2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -25,8 +26,17 @@ namespace AuthMVC2.Controllers
         public IActionResult MaterialState()
         {
             var materials = _dbContext.Materials.ToList();
-            return View(materials);
+            var materialTypes = _dbContext.MaterialTypes.ToList();
+
+            var viewModel = new MaterialViewModel
+            {
+                Materials = materials,
+                MaterialTypes = materialTypes
+            };
+
+            return View(viewModel);
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

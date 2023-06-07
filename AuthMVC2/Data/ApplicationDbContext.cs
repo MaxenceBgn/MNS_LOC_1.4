@@ -13,5 +13,6 @@ namespace AuthMVC2.Data
         }
 
         public DbSet<Material> Materials { get; set; }
+        public DbSet<MaterialType> MaterialTypes { get; set; }
     }
 }

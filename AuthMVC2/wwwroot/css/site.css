@@ -129,18 +129,15 @@ body {
 
 /* Page de l'état du parc matériel */
 
-#global_state_material_panel {
-    background-color: #C2C2C2;
-    border-radius: 10px;
-    padding: 20px;
-}
-
 #state_material_title {
     color: white;
 }
 
 .state_panel {
     margin: 10px;
+    background-color: #C2C2C2;
+    border-radius: 10px;
+    padding: 20px;
 }
 
 .selected {
