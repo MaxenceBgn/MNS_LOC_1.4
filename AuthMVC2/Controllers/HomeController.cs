@@ -28,47 +28,58 @@ namespace AuthMVC2.Controllers
             return View();
         }
 
-        [HttpPost]
         public IActionResult MaterialState()
         {
-            bool searchResult;
-            if (!bool.TryParse(Request.Form["searchResult"], out searchResult))
+            try
             {
-                // La conversion a échoué, vous pouvez définir une valeur par défaut ici
-                searchResult = false; // Par exemple, définir la valeur par défaut à false
+                bool searchResult = false;
+
+                if (Request.Method == "POST")
+                {
+                    if (!bool.TryParse(Request.Form["searchResult"], out searchResult))
+                    {
+                        // La conversion a échoué, vous pouvez définir une valeur par défaut ici
+                        searchResult = false; // Par exemple, définir la valeur par défaut à false
+                    }
+                }
+
+                // Récupérer les valeurs depuis la session
+                string searchResultString = HttpContext.Session.GetString("SearchResult");
+                if (!string.IsNullOrEmpty(searchResultString) && bool.TryParse(searchResultString, out bool parsedSearchResult))
+                {
+                    searchResult = parsedSearchResult;
+                }
+
+                string materialListString = HttpContext.Session.GetString("MaterialList");
+                List<string> materialList = new List<string>();
+                if (!string.IsNullOrEmpty(materialListString))
+                {
+                    materialList = materialListString.Split(',').ToList();
+                }
+
+                int materialNumber = _dbContext.Materials.Count();
+                int outOfOrderMaterialNumber = _dbContext.Materials.Count(m => !m.IsFunctional);
+                int availableMaterial = materialNumber - outOfOrderMaterialNumber;
+
+                var viewModel = new Models.ViewModels.MaterialSearchViewModel
+                {
+                    Materials = _dbContext.Materials.ToList(),
+                    MaterialTypes = _dbContext.MaterialTypes.ToList(),
+                    SearchResult = searchResult,
+                    MaterialList = materialList ?? new List<string>()
+                };
+
+                return View(viewModel);
             }
-
-            // Récupérer les valeurs depuis la session
-            string searchResultString = HttpContext.Session.GetString("SearchResult");
-            if (!string.IsNullOrEmpty(searchResultString) && bool.TryParse(searchResultString, out bool parsedSearchResult))
+            catch (Exception ex)
             {
-                searchResult = parsedSearchResult;
+                Console.WriteLine(ex.ToString());
+                return RedirectToAction("Error", "Home");
             }
-
-            string materialListString = HttpContext.Session.GetString("MaterialList");
-            List<string> materialList = new List<string>();
-            if (!string.IsNullOrEmpty(materialListString))
-            {
-                materialList = materialListString.Split(',').ToList();
-            }
-
-
-            int materialNumber = _dbContext.Materials.Count();
-            int outOfOrderMaterialNumber = _dbContext.Materials.Count(m => !m.IsFunctional);
-            int availableMaterial = materialNumber - outOfOrderMaterialNumber;
-
-            var viewModel = new Models.ViewModels.MaterialSearchViewModel
-            {
-                Materials = _dbContext.Materials.ToList(),
-                MaterialTypes = _dbContext.MaterialTypes.ToList(),
-                SearchResult = searchResult,
-                MaterialList = materialList ?? new List<string>()
-            };
-            return View(viewModel);
         }
 
 
-        [HttpPost]
+
         public IActionResult MaterialSearch(MaterialSearchViewModel model, MaterialSearchViewModel materialSearchViewModel)
         {
             bool searchResult = materialSearchViewModel.SearchResult;

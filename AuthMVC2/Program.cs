@@ -71,19 +71,4 @@ async Task CreateRolesAsync(IServiceProvider serviceProvider)
     }
 }
 
-//app.UseEndpoints(endpoints =>
-//{
-//    endpoints.MapControllerRoute(
-//        name: "default",
-//        pattern: "{controller=Home}/{action=Index}/{id?}"
-//    );
-
-//    endpoints.MapPost("/Home/MaterialSearch", async context =>
-//    {
-//        var controller = new HomeController(null, null); // Remplacez null, null par les dépendances réelles nécessaires
-//        await controller.MaterialSearch(context, MaterialSearchViewModel);
-//    });
-//});
-
-
 
