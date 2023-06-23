@@ -22,8 +22,19 @@
         }
         else
         {
-            <h1>Bienvenue.</h1>
-            <p>Veuillez vous authentifier pour continuer.</p>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="askLoginPanel col-md-6">
+                        <h1>Bienvenue.</h1>
+                        <img src="~/images/logo-mns.svg" />
+                        <p>Veuillez vous authentifier pour continuer.</p>
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login" title="Authentification">S'authentifier</a>
+                    </div>
+                </div>
+            </div>
+            
+            
         }
     }
 </div>
+

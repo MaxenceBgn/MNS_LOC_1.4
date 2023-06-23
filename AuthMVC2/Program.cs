@@ -1,4 +1,6 @@
+using AuthMVC2.Controllers;
 using AuthMVC2.Data;
+using AuthMVC2.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +18,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>()
 
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -33,6 +36,7 @@ else
     app.UseHsts();
 }
 
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -66,3 +70,20 @@ async Task CreateRolesAsync(IServiceProvider serviceProvider)
         }
     }
 }
+
+//app.UseEndpoints(endpoints =>
+//{
+//    endpoints.MapControllerRoute(
+//        name: "default",
+//        pattern: "{controller=Home}/{action=Index}/{id?}"
+//    );
+
+//    endpoints.MapPost("/Home/MaterialSearch", async context =>
+//    {
+//        var controller = new HomeController(null, null); // Remplacez null, null par les dépendances réelles nécessaires
+//        await controller.MaterialSearch(context, MaterialSearchViewModel);
+//    });
+//});
+
+
+

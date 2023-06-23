@@ -1,4 +1,7 @@
-﻿<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+﻿@using AuthMVC2.Models.ViewModels
+
+@model AuthMVC2.Models.ViewModels.MaterialSearchViewModel
+
 
 @{
     ViewData["Title"] = "Etat du parc matériel";
@@ -14,9 +17,15 @@
     }
     int avaibleMaterial = materialNumber - outOfOrderMaterialNumber;
 
-    bool searchResult = true;
+    bool searchResult = false;
+    List<string> materialList = new List<string> { };
+
 }
-<h1 id="state_material_title">@ViewData["Title"]</h1>
+
+
+
+<h1 id="state_material_title" class="text-center mx-auto">@ViewData["Title"]</h1>
+
 
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -32,26 +41,34 @@
         <div class="col-md-5 state_panel">
             <h3>Recherche d'un matériel</h3>
 
-            <div class="row">
-                <div class="col-md-4">
-                    <h4>Type de matériel :</h4>
-                </div>
-                <div class="col-md-8">
-                    <select class="form-select" id="material-select">
-                        <option selected disabled>Choisissez un type de matériel</option>
-                        @{
-                            foreach (var materialType in Model.MaterialTypes)
+            <form method="post" action="/Home/MaterialSearch">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Type de matériel :</h4>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-select" id="material-select" name="typeForm">
+                            <option selected disabled>Choisissez un type de matériel</option>
+                            @foreach (var materialType in Model.MaterialTypes)
                             {
-                                <option value=@materialType.TypeName>@materialType.TypeName</option>
+                                <option value="@materialType.TypeName">@materialType.TypeName</option>
                             }
+
+                        </select>
+                    </div>
+                    <input type="hidden" name="searchResult" value="@searchResult.ToString()" />
+                        @foreach (var item in materialList)
+                        {
+                            <input type="hidden" name="materialList" value="@item" />
                         }
-                    </select>
-                </div>
+
+                    <div class="justify-content-center">
+                        <button type="submit" class="btn btn-warning" id="search_button_material_state">Rechercher</button>
+                    </div>
+
                 
-                 
-            </div>
-            
-            
+            </form>
         </div>
 
     </div>
@@ -64,11 +81,24 @@
             <div class="col-md-10 state_panel" id="search_results">
                 <h3>Résultats de la recherche</h3><br />
 
-                <p>
-                    Donec gravida lorem augue, eu sagittis leo cursus at. Sed blandit leo eget est bibendum iaculis. Aenean tincidunt ex urna, id mollis nulla fringilla quis. Integer cursus orci id massa tristique fermentum. Aliquam tortor leo, elementum in tempor vitae, maximus sed nulla. Etiam condimentum laoreet orci, nec blandit ligula sodales tristique. Praesent interdum odio ut sem efficitur vestibulum. Maecenas ac sagittis lorem. Sed posuere nulla ac augue tincidunt, nec efficitur tortor semper. Mauris finibus luctus erat vitae gravida. Sed a tempus neque. Ut augue est, vehicula non ipsum sed, viverra tempor tellus. Phasellus quis pharetra lorem, vitae sollicitudin nisi. Nam interdum congue tellus, quis auctor justo porta at.
-                </p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Type de matériel</th>
+                            <th scope="col">État</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var sentence in materialList)
+                        {
+                            <tr>
+                                <td>@sentence</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
-
         </div>
     </div>
 }

@@ -125,6 +125,10 @@ body {
     height: 100vh;
 }
 
+.askLoginPanel {
+    background-color: #8E8E8E;
+}
+
 
 
 /* Page de l'état du parc matériel */
@@ -132,6 +136,7 @@ body {
 #state_material_title {
     color: white;
 }
+
 
 .state_panel {
     margin: 10px;
@@ -146,6 +151,20 @@ body {
 
 .state_panel h4 {
     font-size: 1em;
+}
+
+#search_button_material_state {
+    margin: 40px;
+    width: 200px;
+    background-color: #ce5e1a;
+    color: white;
+}
+
+#functionalIndicator, #avaibleIndicator {
+    background-color: aqua;
+    width: 15px;
+    height: 15px;
+    border-radius: 25px;
 }
 
 

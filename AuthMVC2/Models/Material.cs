@@ -3,6 +3,7 @@
     public class Material
     {
         public int MaterialId { get; set; }
+        public int TypeId { get; set; }
         public string? ColorMaterial { get; set; }
         public string? DefaultMaterial { get; set; }
         public bool IsFunctional { get; set; }
